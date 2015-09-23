@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8190ED891AC1706400CAF0CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190ED881AC1706400CAF0CA /* AppDelegate.m */; };
+		8190ED8B1AC1706400CAF0CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190ED8A1AC1706400CAF0CA /* main.m */; };
+		8190ED8D1AC1706400CAF0CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8190ED8C1AC1706400CAF0CA /* Images.xcassets */; };
+		8190ED901AC1706400CAF0CA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190ED8E1AC1706400CAF0CA /* MainMenu.xib */; };
+		8190ED9C1AC1706400CAF0CA /* NoteItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190ED9B1AC1706400CAF0CA /* NoteItTests.m */; };
+		8190EDA71AC2895500CAF0CA /* NIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190EDA61AC2895500CAF0CA /* NIDataManager.m */; };
+		8190EDAA1AC2896500CAF0CA /* NIFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190EDA91AC2896500CAF0CA /* NIFileManager.m */; };
+		819C2ADE1BB27B84005BD1FA /* NIMenulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 819C2ADD1BB27B84005BD1FA /* NIMenulet.m */; settings = {ASSET_TAGS = (); }; };
+		819C2AE31BB27C03005BD1FA /* menulet-icon-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 819C2AE11BB27C03005BD1FA /* menulet-icon-off.png */; settings = {ASSET_TAGS = (); }; };
+		819C2AE41BB27C03005BD1FA /* menulet-icon-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 819C2AE21BB27C03005BD1FA /* menulet-icon-on.png */; settings = {ASSET_TAGS = (); }; };
+		819C2AE71BB27EB0005BD1FA /* NIMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819C2AE61BB27EB0005BD1FA /* NIMainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		819C2AEC1BB27ECF005BD1FA /* NIPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819C2AEA1BB27ECF005BD1FA /* NIPopoverController.m */; settings = {ASSET_TAGS = (); }; };
+		819C2AED1BB27ECF005BD1FA /* NIPopoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819C2AEB1BB27ECF005BD1FA /* NIPopoverController.xib */; settings = {ASSET_TAGS = (); }; };
+		81A2B3401BB146C600A62B0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A2B33F1BB146C600A62B0E /* libsqlite3.tbd */; };
+		81D782BB1BB28E3900766B28 /* NINote.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D782BA1BB28E3900766B28 /* NINote.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8190ED961AC1706400CAF0CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8190ED7A1AC1706400CAF0CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8190ED811AC1706400CAF0CA;
+			remoteInfo = NoteIt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8190ED821AC1706400CAF0CA /* NoteIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8190ED861AC1706400CAF0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8190ED871AC1706400CAF0CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8190ED881AC1706400CAF0CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8190ED8A1AC1706400CAF0CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8190ED8C1AC1706400CAF0CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8190ED8F1AC1706400CAF0CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8190ED951AC1706400CAF0CA /* NoteItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8190ED9A1AC1706400CAF0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8190ED9B1AC1706400CAF0CA /* NoteItTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteItTests.m; sourceTree = "<group>"; };
+		8190EDA51AC2895500CAF0CA /* NIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDataManager.h; sourceTree = "<group>"; };
+		8190EDA61AC2895500CAF0CA /* NIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDataManager.m; sourceTree = "<group>"; };
+		8190EDA81AC2896500CAF0CA /* NIFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIFileManager.h; sourceTree = "<group>"; };
+		8190EDA91AC2896500CAF0CA /* NIFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIFileManager.m; sourceTree = "<group>"; };
+		819C2ADC1BB27B84005BD1FA /* NIMenulet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMenulet.h; sourceTree = "<group>"; };
+		819C2ADD1BB27B84005BD1FA /* NIMenulet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMenulet.m; sourceTree = "<group>"; };
+		819C2AE11BB27C03005BD1FA /* menulet-icon-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet-icon-off.png"; sourceTree = "<group>"; };
+		819C2AE21BB27C03005BD1FA /* menulet-icon-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menulet-icon-on.png"; sourceTree = "<group>"; };
+		819C2AE51BB27EB0005BD1FA /* NIMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMainViewController.h; sourceTree = "<group>"; };
+		819C2AE61BB27EB0005BD1FA /* NIMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMainViewController.m; sourceTree = "<group>"; };
+		819C2AE91BB27ECF005BD1FA /* NIPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPopoverController.h; sourceTree = "<group>"; };
+		819C2AEA1BB27ECF005BD1FA /* NIPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPopoverController.m; sourceTree = "<group>"; };
+		819C2AEB1BB27ECF005BD1FA /* NIPopoverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NIPopoverController.xib; sourceTree = "<group>"; };
+		81A2B33F1BB146C600A62B0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		81A2B3431BB1484800A62B0E /* NoteItPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteItPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		81D782B91BB28E3900766B28 /* NINote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINote.h; sourceTree = "<group>"; };
+		81D782BA1BB28E3900766B28 /* NINote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINote.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8190ED7F1AC1706400CAF0CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81A2B3401BB146C600A62B0E /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8190ED921AC1706400CAF0CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8190ED791AC1706400CAF0CA = {
+			isa = PBXGroup;
+			children = (
+				81A2B33F1BB146C600A62B0E /* libsqlite3.tbd */,
+				8190ED841AC1706400CAF0CA /* NoteIt */,
+				8190ED981AC1706400CAF0CA /* NoteItTests */,
+				8190ED831AC1706400CAF0CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8190ED831AC1706400CAF0CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8190ED821AC1706400CAF0CA /* NoteIt.app */,
+				8190ED951AC1706400CAF0CA /* NoteItTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8190ED841AC1706400CAF0CA /* NoteIt */ = {
+			isa = PBXGroup;
+			children = (
+				819C2AE01BB27C03005BD1FA /* images */,
+				8190ED871AC1706400CAF0CA /* AppDelegate.h */,
+				8190ED881AC1706400CAF0CA /* AppDelegate.m */,
+				819C2AE51BB27EB0005BD1FA /* NIMainViewController.h */,
+				819C2AE61BB27EB0005BD1FA /* NIMainViewController.m */,
+				819C2AE91BB27ECF005BD1FA /* NIPopoverController.h */,
+				819C2AEA1BB27ECF005BD1FA /* NIPopoverController.m */,
+				819C2AEB1BB27ECF005BD1FA /* NIPopoverController.xib */,
+				819C2AEE1BB281CE005BD1FA /* Managers */,
+				819C2ADF1BB27B8D005BD1FA /* Views */,
+				8190ED8C1AC1706400CAF0CA /* Images.xcassets */,
+				8190ED8E1AC1706400CAF0CA /* MainMenu.xib */,
+				8190ED851AC1706400CAF0CA /* Supporting Files */,
+			);
+			path = NoteIt;
+			sourceTree = "<group>";
+		};
+		8190ED851AC1706400CAF0CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				81A2B3431BB1484800A62B0E /* NoteItPrefixHeader.pch */,
+				8190ED861AC1706400CAF0CA /* Info.plist */,
+				8190ED8A1AC1706400CAF0CA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8190ED981AC1706400CAF0CA /* NoteItTests */ = {
+			isa = PBXGroup;
+			children = (
+				8190ED9B1AC1706400CAF0CA /* NoteItTests.m */,
+				8190ED991AC1706400CAF0CA /* Supporting Files */,
+			);
+			path = NoteItTests;
+			sourceTree = "<group>";
+		};
+		8190ED991AC1706400CAF0CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8190ED9A1AC1706400CAF0CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		819C2ADF1BB27B8D005BD1FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				819C2ADC1BB27B84005BD1FA /* NIMenulet.h */,
+				819C2ADD1BB27B84005BD1FA /* NIMenulet.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		819C2AE01BB27C03005BD1FA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				819C2AE11BB27C03005BD1FA /* menulet-icon-off.png */,
+				819C2AE21BB27C03005BD1FA /* menulet-icon-on.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		819C2AEE1BB281CE005BD1FA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8190EDA51AC2895500CAF0CA /* NIDataManager.h */,
+				8190EDA61AC2895500CAF0CA /* NIDataManager.m */,
+				8190EDA81AC2896500CAF0CA /* NIFileManager.h */,
+				8190EDA91AC2896500CAF0CA /* NIFileManager.m */,
+				81D782B91BB28E3900766B28 /* NINote.h */,
+				81D782BA1BB28E3900766B28 /* NINote.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8190ED811AC1706400CAF0CA /* NoteIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8190ED9F1AC1706400CAF0CA /* Build configuration list for PBXNativeTarget "NoteIt" */;
+			buildPhases = (
+				8190ED7E1AC1706400CAF0CA /* Sources */,
+				8190ED7F1AC1706400CAF0CA /* Frameworks */,
+				8190ED801AC1706400CAF0CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoteIt;
+			productName = NoteIt;
+			productReference = 8190ED821AC1706400CAF0CA /* NoteIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8190ED941AC1706400CAF0CA /* NoteItTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8190EDA21AC1706400CAF0CA /* Build configuration list for PBXNativeTarget "NoteItTests" */;
+			buildPhases = (
+				8190ED911AC1706400CAF0CA /* Sources */,
+				8190ED921AC1706400CAF0CA /* Frameworks */,
+				8190ED931AC1706400CAF0CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8190ED971AC1706400CAF0CA /* PBXTargetDependency */,
+			);
+			name = NoteItTests;
+			productName = NoteItTests;
+			productReference = 8190ED951AC1706400CAF0CA /* NoteItTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8190ED7A1AC1706400CAF0CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = AutoNavi;
+				TargetAttributes = {
+					8190ED811AC1706400CAF0CA = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					8190ED941AC1706400CAF0CA = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 8190ED811AC1706400CAF0CA;
+					};
+				};
+			};
+			buildConfigurationList = 8190ED7D1AC1706400CAF0CA /* Build configuration list for PBXProject "NoteIt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8190ED791AC1706400CAF0CA;
+			productRefGroup = 8190ED831AC1706400CAF0CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8190ED811AC1706400CAF0CA /* NoteIt */,
+				8190ED941AC1706400CAF0CA /* NoteItTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8190ED801AC1706400CAF0CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				819C2AE41BB27C03005BD1FA /* menulet-icon-on.png in Resources */,
+				819C2AE31BB27C03005BD1FA /* menulet-icon-off.png in Resources */,
+				8190ED8D1AC1706400CAF0CA /* Images.xcassets in Resources */,
+				8190ED901AC1706400CAF0CA /* MainMenu.xib in Resources */,
+				819C2AED1BB27ECF005BD1FA /* NIPopoverController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8190ED931AC1706400CAF0CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8190ED7E1AC1706400CAF0CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D782BB1BB28E3900766B28 /* NINote.m in Sources */,
+				819C2ADE1BB27B84005BD1FA /* NIMenulet.m in Sources */,
+				8190EDAA1AC2896500CAF0CA /* NIFileManager.m in Sources */,
+				8190ED8B1AC1706400CAF0CA /* main.m in Sources */,
+				8190EDA71AC2895500CAF0CA /* NIDataManager.m in Sources */,
+				819C2AEC1BB27ECF005BD1FA /* NIPopoverController.m in Sources */,
+				819C2AE71BB27EB0005BD1FA /* NIMainViewController.m in Sources */,
+				8190ED891AC1706400CAF0CA /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8190ED911AC1706400CAF0CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8190ED9C1AC1706400CAF0CA /* NoteItTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8190ED971AC1706400CAF0CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8190ED811AC1706400CAF0CA /* NoteIt */;
+			targetProxy = 8190ED961AC1706400CAF0CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8190ED8E1AC1706400CAF0CA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8190ED8F1AC1706400CAF0CA /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8190ED9D1AC1706400CAF0CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8190ED9E1AC1706400CAF0CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8190EDA01AC1706400CAF0CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = NoteItPrefixHeader.pch;
+				INFOPLIST_FILE = NoteIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.autonavi.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8190EDA11AC1706400CAF0CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = NoteItPrefixHeader.pch;
+				INFOPLIST_FILE = NoteIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.autonavi.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8190EDA31AC1706400CAF0CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoteItTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.autonavi.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteIt.app/Contents/MacOS/NoteIt";
+			};
+			name = Debug;
+		};
+		8190EDA41AC1706400CAF0CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoteItTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.autonavi.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteIt.app/Contents/MacOS/NoteIt";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8190ED7D1AC1706400CAF0CA /* Build configuration list for PBXProject "NoteIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8190ED9D1AC1706400CAF0CA /* Debug */,
+				8190ED9E1AC1706400CAF0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8190ED9F1AC1706400CAF0CA /* Build configuration list for PBXNativeTarget "NoteIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8190EDA01AC1706400CAF0CA /* Debug */,
+				8190EDA11AC1706400CAF0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8190EDA21AC1706400CAF0CA /* Build configuration list for PBXNativeTarget "NoteItTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8190EDA31AC1706400CAF0CA /* Debug */,
+				8190EDA41AC1706400CAF0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8190ED7A1AC1706400CAF0CA /* Project object */;
+}

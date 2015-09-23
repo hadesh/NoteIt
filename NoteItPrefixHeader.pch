@@ -1,0 +1,28 @@
+//
+//  NoteItPrefixHeader.pch
+//  NoteIt
+//
+//  Created by xiaoming han on 15/9/22.
+//  Copyright © 2015年 AutoNavi. All rights reserved.
+//
+
+#ifndef NoteItPrefixHeader_pch
+#define NoteItPrefixHeader_pch
+
+#define NIEnableLog 1
+
+#if NIEnableLog && DEBUG
+
+#define NILog(args...) NSLog(@"[Debug] %@", [NSString stringWithFormat: args])
+#define NILogMethod() NSLog(@"[Debug] logged method call: -[%@ %@] (line %d)", self, NSStringFromSelector(_cmd), __LINE__)
+
+#else
+
+#define NILog(args...)
+#define NILogMethod()
+#endif
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* NoteItPrefixHeader_pch */
