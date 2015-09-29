@@ -108,7 +108,7 @@
     
     self.note.comment = finalString;
     
-    NILog(@"finalString :%@", finalString);
+//    NILog(@"finalString :%@", finalString);
     return YES;
 }
 

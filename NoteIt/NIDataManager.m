@@ -7,16 +7,20 @@
 //
 
 #import "NIDataManager.h"
-#include <sqlite3.h>
+#import "NINote.h"
+#import <FMDB.h>
 
 #define kNIDBFileName   @"noteit.sqlite"
 #define kNITableName    @"t_notes"
+
+#define kNIItemUUID     @"uuid"
+#define kNIItemComment  @"comment"
 #define kNIItemPath     @"path"
-#define kNIItemNote     @"note"
+#define kNIItemTime     @"timestamp"
 
 @implementation NIDataManager
 {
-    sqlite3 *_db;
+    FMDatabase *_db;
 }
 
 + (instancetype)sharedInstance
@@ -46,8 +50,8 @@
 {
     if (_db)
     {
-        sqlite3_close(_db);
-        _db = NULL;
+        [_db close];
+        _db = nil;
     }
 }
 
@@ -62,86 +66,85 @@
 
 - (void)openDB
 {
-    const char *fileName = [self dbFilePath].UTF8String;
-    
-    int result = sqlite3_open(fileName, &_db);
-    if (result == SQLITE_OK)
+    _db = [FMDatabase databaseWithPath:[self dbFilePath]];
+    if (![_db open])
     {
-        NILog(@"open db ok: %s", fileName);
-        [self createTable];
+        NILog(@"database open failed");
     }
     else
     {
-        NILog(@"open db failed");
+        [self createTable];
     }
 }
 
 - (void)createTable
 {
-    if (_db == NULL)
-    {
-        return;
-    }
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@ text PRIMARY KEY,%@ text,%@ text NOT NULL,%@ integer);", kNITableName, kNIItemUUID, kNIItemComment, kNIItemPath, kNIItemTime];
     
-    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT,%@ text NOT NULL,%@ text NOT NULL);", kNITableName, kNIItemPath, kNIItemNote];
-    
-    char *errmsg = NULL;
-    int result = sqlite3_exec(_db, sql.UTF8String, NULL, NULL, &errmsg);
-    if (result == SQLITE_OK)
+    if (![_db executeUpdate:sql])
     {
-        NILog(@"create table ok");
+        NILog(@"create table failed");
     }
-    else
-    {
-        NILog(@"create table failed: %s",errmsg);
-    }
-}
-
-- (BOOL)itemExistsAtPath:(NSString *)path
-{
-    return YES;
 }
 
 #pragma mark - Interfaces
 
-- (void)insertNote:(NSString *)note withItemPath:(NSString *)path
+- (BOOL)isNoteExists:(NINote *)note
 {
-    NSAssert(_db != NULL, @"db handler can not be null");
+    NSAssert(_db != nil, @"db handler can not be null");
     
-    if (note.length == 0 || path.length == 0 || ![self itemExistsAtPath:path])
+    if (note == nil)
     {
-        return;
+        return NO;
     }
     
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@) VALUES ('%@','%@');",kNITableName, kNIItemPath, kNIItemNote, path, note];
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(%@) AS countNum FROM %@ WHERE %@ = %@", kNIItemUUID, kNITableName, kNIItemUUID, note.uuid];
     
-    char *errmsg = NULL;
-    sqlite3_exec(_db, sql.UTF8String, NULL, NULL, &errmsg);
+    FMResultSet *rs =[_db executeQuery:sql];
+    while ([rs next])
+    {
+        NSInteger count = [rs intForColumn:@"countNum"];
+        return count > 0;
+    }
     
-    if (errmsg)
+    return NO;
+}
+
+- (BOOL)updateNote:(NINote *)note
+{
+    NSAssert(_db != nil, @"db handler can not be null");
+    
+    NSString *sql = [NSString stringWithFormat:@"INSERT OR REPLACE INTO %@ (%@, %@, %@, %@) VALUES (?,?,?,?)",  kNITableName, kNIItemUUID, kNIItemComment, kNIItemPath, kNIItemTime];
+    return [_db executeUpdate:sql, note.uuid, note.comment, note.path, @(note.timestamp)];
+}
+
+- (BOOL)removeNote:(NINote *)note
+{
+    NSAssert(_db != nil, @"db handler can not be null");
+    
+    return NO;
+}
+
+/// 搜索关键字（comment和path）
+- (NSArray *)notesWithKeywords:(NSString *)keywords
+{
+    NSAssert(_db != nil, @"db handler can not be null");
+    
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ like '%%%@%%' OR %@ like '%%%@%%'", kNITableName, kNIItemComment, keywords, kNIItemPath, keywords];
+    FMResultSet *rs = [_db executeQuery:sql];
+    
+    NSMutableArray *array = [NSMutableArray array];
+    while([rs next])
     {
-        NILog(@"insert failed: %s",errmsg);
+        NINote *obj = [[NINote alloc] init];
+        obj.uuid = [rs stringForColumn:kNIItemUUID];
+        obj.comment = [rs stringForColumn:kNIItemComment];
+        obj.path = [rs stringForColumn:kNIItemPath];
+        obj.timestamp = [rs doubleForColumn:kNIItemTime];
+        [array addObject: obj];
     }
-    else
-    {
-        NILog(@"inser ok");
-    }
-}
-
-- (void)updateNote:(NSString *)note withItemPath:(NSString *)path
-{
-    NSAssert(_db != NULL, @"db handler can not be null");
-}
-
-- (NSString *)noteForItemAtPath:(NSString *)path
-{
-    NSAssert(_db != NULL, @"db handler can not be null");
-    return nil;
-}
-
-- (void)deleteNoteForItemAtPath:(NSString *)path
-{
-    NSAssert(_db != NULL, @"db handler can not be null");
+    
+    return array;
 }
 
 @end

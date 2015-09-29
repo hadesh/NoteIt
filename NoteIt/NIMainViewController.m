@@ -8,6 +8,7 @@
 
 #import "NIMainViewController.h"
 #import "NIFileManager.h"
+#import "NIDataManager.h"
 
 @interface NIMainViewController ()<NIMenuletDelegate, NIPopoverDelegate>
 
@@ -87,6 +88,13 @@
     popover.note = note;
 }
 
+- (void)savingNote:(NINote *)note
+{
+    [[NIFileManager sharedInstance] saveNoteToFile:note];
+    
+    [[NIDataManager sharedInstance] updateNote:note];
+}
+
 #pragma mark - NIMenuletDelegate
 
 - (NSString *)activeImageName
@@ -127,7 +135,7 @@
         }
         case NIPopoverActionSave:
         {
-            [[NIFileManager sharedInstance] saveNoteToFile:popover.note];
+            [self savingNote:popover.note];
             [self closePopover];
             break;
         }
@@ -135,6 +143,8 @@
         default:
         {
             [self closePopover];
+            
+            NSLog(@"notes :%@", [[NIDataManager sharedInstance] notesWithKeywords:@"test"]);
             break;
         }
     }

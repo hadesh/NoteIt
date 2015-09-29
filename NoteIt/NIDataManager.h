@@ -8,16 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class NINote;
+
 /// 操作数据库
 @interface NIDataManager : NSObject
 
 + (instancetype)sharedInstance;
 
-- (void)insertNote:(NSString *)note withItemPath:(NSString *)path;
-- (void)updateNote:(NSString *)note withItemPath:(NSString *)path;
+- (BOOL)isNoteExists:(NINote *)note;
 
-- (NSString *)noteForItemAtPath:(NSString *)path;
+/// 更新note，不存在则insert
+- (BOOL)updateNote:(NINote *)note;
 
-- (void)deleteNoteForItemAtPath:(NSString *)path;
+/// 删除
+- (BOOL)removeNote:(NINote *)note;
+
+/// 搜索关键字（注释和path）
+- (NSArray<NINote *> *)notesWithKeywords:(NSString *)keywords;
 
 @end
