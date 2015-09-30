@@ -114,6 +114,11 @@
 {
     NSAssert(_db != nil, @"db handler can not be null");
     
+    if (note == nil || note.uuid.length == 0 || note.path.length == 0)
+    {
+        return NO;
+    }
+    
     NSString *sql = [NSString stringWithFormat:@"INSERT OR REPLACE INTO %@ (%@, %@, %@, %@) VALUES (?,?,?,?)",  kNITableName, kNIItemUUID, kNIItemComment, kNIItemPath, kNIItemTime];
     return [_db executeUpdate:sql, note.uuid, note.comment, note.path, @(note.timestamp)];
 }
@@ -122,7 +127,14 @@
 {
     NSAssert(_db != nil, @"db handler can not be null");
     
-    return NO;
+    if (note == nil || note.uuid.length == 0 || note.path.length == 0)
+    {
+        return NO;
+    }
+    
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ where %@ = ?",  kNITableName, kNIItemUUID];
+    
+    return [_db executeUpdate:sql, note.uuid];
 }
 
 /// 搜索关键字（comment和path）
@@ -130,7 +142,14 @@
 {
     NSAssert(_db != nil, @"db handler can not be null");
     
+    
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ like '%%%@%%' OR %@ like '%%%@%%'", kNITableName, kNIItemComment, keywords, kNIItemPath, keywords];
+    
+    if (keywords.length == 0)
+    {
+        sql = [NSString stringWithFormat:@"SELECT * FROM %@", kNITableName];
+    }
+    
     FMResultSet *rs = [_db executeQuery:sql];
     
     NSMutableArray *array = [NSMutableArray array];

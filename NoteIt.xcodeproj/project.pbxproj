@@ -22,6 +22,7 @@
 		819C2AED1BB27ECF005BD1FA /* NIPopoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819C2AEB1BB27ECF005BD1FA /* NIPopoverController.xib */; settings = {ASSET_TAGS = (); }; };
 		81A2B3401BB146C600A62B0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A2B33F1BB146C600A62B0E /* libsqlite3.tbd */; };
 		81D782BB1BB28E3900766B28 /* NINote.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D782BA1BB28E3900766B28 /* NINote.m */; settings = {ASSET_TAGS = (); }; };
+		81FA31F41BBB97E1000ADC00 /* NIMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81FA31F31BBB97E1000ADC00 /* NIMainViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		9C6EF1FC9EA0BA17B3A98D7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF59D5D9CCEA424B872F776 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		81A2B3431BB1484800A62B0E /* NoteItPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteItPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		81D782B91BB28E3900766B28 /* NINote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINote.h; sourceTree = "<group>"; };
 		81D782BA1BB28E3900766B28 /* NINote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINote.m; sourceTree = "<group>"; };
+		81FA31F31BBB97E1000ADC00 /* NIMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NIMainViewController.xib; sourceTree = "<group>"; };
 		8527920DCD73EDEE0DD68102 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF59D5D9CCEA424B872F776 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				8190ED881AC1706400CAF0CA /* AppDelegate.m */,
 				819C2AE51BB27EB0005BD1FA /* NIMainViewController.h */,
 				819C2AE61BB27EB0005BD1FA /* NIMainViewController.m */,
+				81FA31F31BBB97E1000ADC00 /* NIMainViewController.xib */,
 				819C2AE91BB27ECF005BD1FA /* NIPopoverController.h */,
 				819C2AEA1BB27ECF005BD1FA /* NIPopoverController.m */,
 				819C2AEB1BB27ECF005BD1FA /* NIPopoverController.xib */,
@@ -288,6 +291,7 @@
 			files = (
 				819C2AE41BB27C03005BD1FA /* menulet-icon-on.png in Resources */,
 				819C2AE31BB27C03005BD1FA /* menulet-icon-off.png in Resources */,
+				81FA31F41BBB97E1000ADC00 /* NIMainViewController.xib in Resources */,
 				8190ED8D1AC1706400CAF0CA /* Images.xcassets in Resources */,
 				8190ED901AC1706400CAF0CA /* MainMenu.xib in Resources */,
 				819C2AED1BB27ECF005BD1FA /* NIPopoverController.xib in Resources */,

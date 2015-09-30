@@ -23,7 +23,13 @@
 /// 删除
 - (BOOL)removeNote:(NINote *)note;
 
-/// 搜索关键字（注释和path）
+/**
+ *  搜索note 如果keywords为空，则显示所有
+ *
+ *  @param keywords 关键字
+ *
+ *  @return note数组
+ */
 - (NSArray<NINote *> *)notesWithKeywords:(NSString *)keywords;
 
 @end

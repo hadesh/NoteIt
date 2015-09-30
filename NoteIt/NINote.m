@@ -29,4 +29,34 @@
     return [_path lastPathComponent];
 }
 
+- (NSString *)textValueForKey:(NSString *)key
+{
+    if (key == nil)
+    {
+        return nil;
+    }
+    
+    id obj = [self valueForKey:key];
+    
+    if (obj == nil)
+    {
+        return nil;
+    }
+    
+    NSString *value = nil;
+    
+    if ([key isEqualToString:@"timestamp"])
+    {
+        NSDateFormatter *fommatter = [[NSDateFormatter alloc] init];
+        [fommatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        
+        value = [fommatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.timestamp]];
+    }
+    else
+    {
+        value = (NSString *)obj;
+    }
+    return value;
+}
+
 @end

@@ -22,13 +22,27 @@
     // Insert code here to initialize your application
     
     [self.window setTitle:@"NoteIt"];
-    [self.window close];
+    [self.window setReleasedWhenClosed:NO];
+    [self.window setMinSize:NSMakeSize(344, 340)];
     
-    self.controller = [[NIMainViewController alloc] init];
+//    [self.window close];
+    
+    self.controller = [[NIMainViewController alloc] initWithNibName:@"NIMainViewController" bundle:nil];
+    
+    [self.window.contentView addSubview:self.controller.view];
+    self.controller.view.frame = ((NSView*)self.window.contentView).bounds;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    [self.window setIsVisible:YES];
+    return YES;
 }
 
 @end

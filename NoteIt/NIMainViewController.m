@@ -9,25 +9,72 @@
 #import "NIMainViewController.h"
 #import "NIFileManager.h"
 #import "NIDataManager.h"
+#import "NINote.h"
 
-@interface NIMainViewController ()<NIMenuletDelegate, NIPopoverDelegate>
+@interface NIMainViewController ()<NIMenuletDelegate, NIPopoverDelegate, NSTableViewDataSource, NSTableViewDelegate>
+
+@property (weak) IBOutlet NSButton *searchButton;
+@property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSTableView *tableView;
+
+@property (strong) NSArray<NINote *> *notes;
+@property (strong) NSArray<NSString *> *colunmIds;
+@property (strong) NSArray<NSString *> *colunmNames;
 
 @end
 
 @implementation NIMainViewController
-- (instancetype)init
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super init];
-    NSAssert(self, @"Fatal: error creating WOMController");
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Initialization code here.
+        
+        
+        _colunmIds = @[@"uuid", @"name", @"comment", @"path", @"timestamp"];
+        _colunmNames = @[@"UUID", @"文件名", @"注释", @"路径", @"更新时间"];
+    }
     
+    return self;
+}
+
+- (void)initMenuButton
+{
     CGFloat thickness = [[NSStatusBar systemStatusBar] thickness];
     self.item = [[NSStatusBar systemStatusBar] statusItemWithLength:thickness];
     self.menulet = [[NIMenulet alloc] initWithFrame:(NSRect){.size={thickness, thickness}}]; /* square item */
     self.menulet.delegate = self;
     [self.item setView:self.menulet];
     [self.item setHighlightMode:NO]; /* blue background when clicked ? */
+}
+
+- (void)initTableView
+{
     
-    return self;
+    [self.tableView removeTableColumn:self.tableView.tableColumns.firstObject];
+    
+    for (int i = 0; i < self.colunmIds.count; ++i)
+    {
+        NSTableColumn *tc = [[NSTableColumn alloc] init];
+        
+        tc.editable = NO;
+        
+        [[tc headerCell ] setStringValue: self.colunmNames[i]];
+        tc.identifier = self.colunmIds[i];
+        [self.tableView addTableColumn:tc];
+    }
+    
+    self.tableView.headerView.needsDisplay = YES;
+    [self.tableView reloadData];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self initMenuButton];
+    [self initTableView];
 }
 
 #pragma mark - Mouse handling
@@ -149,4 +196,39 @@
         }
     }
 }
+
+#pragma mark - search
+
+- (IBAction)searchAction:(id)sender
+{
+    NSString *text = [self.searchField stringValue];
+//    NSLog(@"%@", text);
+    
+    self.notes = [[NIDataManager sharedInstance] notesWithKeywords:text];
+    [self.tableView reloadData];
+}
+
+#pragma mark - tableView
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return self.notes.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    NSString *columnId = tableColumn.identifier;
+    
+    NINote *note = self.notes[row];
+    
+    NSString *value = [note textValueForKey:columnId];
+    
+    return value;
+}
+
+//- (void)tableView:(NSTableView *)tableView setObjectValue:(nullable id)object forTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
+//{
+// // something wrong here...
+//}
+
 @end

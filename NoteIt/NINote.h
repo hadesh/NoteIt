@@ -20,4 +20,8 @@
                         uuid:(NSString *)uuid
                      comment:(NSString *)comment
                    timestamp:(NSTimeInterval)timestamp;
+
+/// 获取属性对应的text
+- (NSString *)textValueForKey:(NSString *)key;
+
 @end
