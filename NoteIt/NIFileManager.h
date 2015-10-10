@@ -24,4 +24,8 @@
 /// 保存note到文件，如果路径有问题则返回NO。
 - (BOOL)saveNoteToFile:(NINote *)note;
 
++ (BOOL)isItemExistsAtPath:(NSString *)path;
+
++ (void)openFinderAtPath:(NSString *)path;
+
 @end

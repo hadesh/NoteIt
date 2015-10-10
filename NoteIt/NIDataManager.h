@@ -15,6 +15,7 @@
 
 + (instancetype)sharedInstance;
 
+/// note 是否存在于数据库
 - (BOOL)isNoteExists:(NINote *)note;
 
 /// 更新note，不存在则insert

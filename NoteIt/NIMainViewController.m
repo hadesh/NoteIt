@@ -17,7 +17,7 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (weak) IBOutlet NSTableView *tableView;
 
-@property (strong) NSArray<NINote *> *notes;
+@property (strong) NSMutableArray<NINote *> *notes;
 @property (strong) NSArray<NSString *> *colunmIds;
 @property (strong) NSArray<NSString *> *colunmNames;
 
@@ -30,8 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
-        
-        
+
         _colunmIds = @[@"uuid", @"name", @"comment", @"path", @"timestamp"];
         _colunmNames = @[@"UUID", @"文件名", @"注释", @"路径", @"更新时间"];
     }
@@ -46,7 +45,7 @@
     self.menulet = [[NIMenulet alloc] initWithFrame:(NSRect){.size={thickness, thickness}}]; /* square item */
     self.menulet.delegate = self;
     [self.item setView:self.menulet];
-    [self.item setHighlightMode:NO]; /* blue background when clicked ? */
+    [self.item setHighlightMode:NO];
 }
 
 - (void)initTableView
@@ -67,6 +66,9 @@
     
     self.tableView.headerView.needsDisplay = YES;
     [self.tableView reloadData];
+    
+    //
+    [self.tableView setDoubleAction:@selector(tableDoubleClick:)];
 }
 
 - (void)viewDidLoad
@@ -77,7 +79,59 @@
     [self initTableView];
 }
 
+#pragma mark - Helpers
+
+- (void)showItemNotExistsAlertWithNote:(NINote *)note
+{
+    NSString *prompt = [NSString stringWithFormat:@"Item [%@] dose not exists at path [%@]", note.name, note.path];
+    
+    NILog(@"%@", prompt);
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:@"Delete this record"];
+    [alert setMessageText:@"Warning"];
+    [alert setInformativeText:prompt];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        
+//        enum {
+//            NSAlertFirstButtonReturn	= 1000,
+//            NSAlertSecondButtonReturn	= 1001,
+//            NSAlertThirdButtonReturn	= 1002
+//        };
+        NILog(@"return code %ld",returnCode);
+        if (returnCode == NSAlertSecondButtonReturn)
+        {
+            [self deleteRecordWithNote:note];
+        }
+    }];
+}
+
+- (void)deleteRecordWithNote:(NINote *)note
+{
+    [[NIDataManager sharedInstance] removeNote:note];
+    [self.notes removeObject:note];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Mouse handling
+
+- (void)tableDoubleClick:(NSTableView *)sender
+{
+    NSInteger row = [sender clickedRow];
+    NINote *note = self.notes[row];
+    
+    if ([NIFileManager isItemExistsAtPath:note.path])
+    {
+        [NIFileManager openFinderAtPath:note.path];
+    }
+    else
+    {
+        [self showItemNotExistsAlertWithNote:note];
+    }
+}
 
 - (void)leftButtonHandler
 {
@@ -156,7 +210,6 @@
 
 - (void)menuletClicked:(NIButtonType)mouseButton
 {
-//    NSLog(@"Menulet clicked");
     if (mouseButton == NIButtonTypeLeft)
     {
         [self leftButtonHandler];
@@ -171,7 +224,7 @@
 
 - (void)popover:(NIPopoverController *)popover didClickButtonForAction:(NIPopoverAction)action;
 {
-    NSLog(@"did click button for action %@", @(action));
+    NILog(@"did click button for action %@", @(action));
     
     switch (action)
     {
@@ -191,7 +244,7 @@
         {
             [self closePopover];
             
-            NSLog(@"notes :%@", [[NIDataManager sharedInstance] notesWithKeywords:@"test"]);
+            NILog(@"notes :%@", [[NIDataManager sharedInstance] notesWithKeywords:@"test"]);
             break;
         }
     }
@@ -202,9 +255,8 @@
 - (IBAction)searchAction:(id)sender
 {
     NSString *text = [self.searchField stringValue];
-//    NSLog(@"%@", text);
     
-    self.notes = [[NIDataManager sharedInstance] notesWithKeywords:text];
+    self.notes = [NSMutableArray arrayWithArray:[[NIDataManager sharedInstance] notesWithKeywords:text]];
     [self.tableView reloadData];
 }
 

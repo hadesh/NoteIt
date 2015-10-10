@@ -114,7 +114,7 @@
 {
     NSAssert(_db != nil, @"db handler can not be null");
     
-    if (note == nil || note.uuid.length == 0 || note.path.length == 0)
+    if (note == nil || !note.isValid)
     {
         return NO;
     }
@@ -127,7 +127,7 @@
 {
     NSAssert(_db != nil, @"db handler can not be null");
     
-    if (note == nil || note.uuid.length == 0 || note.path.length == 0)
+    if (note == nil || !note.isValid)
     {
         return NO;
     }

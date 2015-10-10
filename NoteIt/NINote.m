@@ -59,4 +59,9 @@
     return value;
 }
 
+- (BOOL)isValid
+{
+    return self.uuid.length > 0 && self.path.length > 0;
+}
+
 @end

@@ -8,6 +8,7 @@
 
 #import "NIFileManager.h"
 #import "NINote.h"
+#import <Cocoa/Cocoa.h>
 
 NSString *const AppleScriptForSelectedItems = @"set biglist to {}\n tell application \"Finder\" to set theSeletion to (get selection)\n if (count of theSeletion) > 0 then\n repeat with i from 1 to number of items in theSeletion\n set this_item to POSIX path of (item i of theSeletion as alias)\n copy this_item to end of biglist\n end repeat\n return biglist\n  end if\n  ";
 
@@ -235,6 +236,27 @@ NSString *const AppleScriptForSelectedItems = @"set biglist to {}\n tell applica
     [self setExtendedAttributesWithPath:note.path key:kNoteItCommnetKey value:[note.comment dataUsingEncoding:NSUTF8StringEncoding]];
 
     return YES;
+}
+
+#pragma mark - Class Helpers
+
++ (BOOL)isItemExistsAtPath:(NSString *)path
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    BOOL isExists = [fileManager fileExistsAtPath:path isDirectory:&isDirectory];
+    
+    return isExists;
+}
+
++ (void)openFinderAtPath:(NSString *)path
+{
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    
+    if ([fileURL isFileURL])
+    {
+        [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[fileURL]];
+    }
 }
 
 @end

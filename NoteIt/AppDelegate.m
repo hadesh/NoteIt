@@ -23,7 +23,7 @@
     
     [self.window setTitle:@"NoteIt"];
     [self.window setReleasedWhenClosed:NO];
-    [self.window setMinSize:NSMakeSize(344, 340)];
+    [self.window setMinSize:NSMakeSize(610, 400)];
     
 //    [self.window close];
     
