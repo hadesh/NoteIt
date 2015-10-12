@@ -15,11 +15,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="506" height="339"/>
+            <rect key="frame" x="0.0" y="0.0" width="610" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" id="hSk-aQ-67b">
-                    <rect key="frame" x="20" y="297" width="378" height="22"/>
+                    <rect key="frame" x="20" y="358" width="482" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="6IX-lr-FGx">
                         <font key="font" metaFont="system"/>
@@ -28,21 +28,21 @@
                     </searchFieldCell>
                 </searchField>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="vyG-Vs-gxM">
-                    <rect key="frame" x="20" y="20" width="466" height="269"/>
+                    <rect key="frame" x="20" y="20" width="570" height="330"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="wN8-c0-Ynm">
-                        <rect key="frame" x="1" y="17" width="464" height="251"/>
+                        <rect key="frame" x="1" y="17" width="568" height="312"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="gTo-FO-Mxb" id="16d-Ii-j2J">
-                                <rect key="frame" x="0.0" y="0.0" width="464" height="251"/>
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="312"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <tableViewGridLines key="gridStyleMask" vertical="YES" dashed="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="461" minWidth="40" maxWidth="1000" id="zQe-oz-4hN">
+                                    <tableColumn width="565" minWidth="40" maxWidth="1000" id="zQe-oz-4hN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -59,6 +59,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="XJ4-Ec-Pn9"/>
                                     <outlet property="delegate" destination="-2" id="f72-f8-WN8"/>
+                                    <outlet property="menu" destination="Dos-dj-LaC" id="ret-sR-pME"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -73,12 +74,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="gTo-FO-Mxb">
-                        <rect key="frame" x="0.0" y="0.0" width="464" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
                 <button verticalHuggingPriority="750" id="Qyr-Qu-gv4">
-                    <rect key="frame" x="410" y="290" width="82" height="32"/>
+                    <rect key="frame" x="514" y="351" width="82" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Df2-R7-jSd">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -91,5 +92,28 @@
             </subviews>
             <point key="canvasLocation" x="212" y="288.5"/>
         </customView>
+        <menu id="Dos-dj-LaC">
+            <items>
+                <menuItem title="Delete" id="vqJ-DH-bXM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuDelete:" target="-2" id="OpZ-h3-OFS"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Open in Finder" id="Cpr-xI-5LZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuOpenFinder:" target="-2" id="BDR-Y3-5od"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Open in Terminal" id="mWQ-9R-Av8">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuOpenTerminal:" target="-2" id="Hy9-IF-hwk"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="650" y="288.5"/>
+        </menu>
     </objects>
 </document>

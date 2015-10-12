@@ -27,5 +27,6 @@
 + (BOOL)isItemExistsAtPath:(NSString *)path;
 
 + (void)openFinderAtPath:(NSString *)path;
++ (void)openTerminalAtPath:(NSString *)path;
 
 @end

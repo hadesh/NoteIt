@@ -68,7 +68,7 @@
     [self.tableView reloadData];
     
     //
-    [self.tableView setDoubleAction:@selector(tableDoubleClick:)];
+    [self.tableView setDoubleAction:@selector(onTableDoubleClick:)];
 }
 
 - (void)viewDidLoad
@@ -80,6 +80,28 @@
 }
 
 #pragma mark - Helpers
+
+- (void)showItemDeleteAlertWithNote:(NINote *)note
+{
+    NSString *prompt = [NSString stringWithFormat:@"Are you sure to [Delete] the record for item [%@] at path [%@]?\n Note: Only the database record will be deleted!", note.name, note.path];
+    
+    NILog(@"%@", prompt);
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:@"Delete"];
+    [alert setMessageText:@"Warning"];
+    [alert setInformativeText:prompt];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        
+        if (returnCode == NSAlertSecondButtonReturn)
+        {
+            [self deleteRecordWithNote:note];
+        }
+    }];
+}
 
 - (void)showItemNotExistsAlertWithNote:(NINote *)note
 {
@@ -118,7 +140,7 @@
 
 #pragma mark - Mouse handling
 
-- (void)tableDoubleClick:(NSTableView *)sender
+- (void)onTableDoubleClick:(NSTableView *)sender
 {
     NSInteger row = [sender clickedRow];
     NINote *note = self.notes[row];
@@ -278,9 +300,62 @@
     return value;
 }
 
-//- (void)tableView:(NSTableView *)tableView setObjectValue:(nullable id)object forTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
-//{
-// // something wrong here...
-//}
+#pragma mark - Table Menu
+
+- (IBAction)onMenuDelete:(id)sender
+{
+    NSInteger row = [_tableView clickedRow];
+    
+    if (row < 0 || row >= self.notes.count)
+    {
+        return;
+    }
+    
+    NINote *note = self.notes[row];
+    
+    [self showItemDeleteAlertWithNote:note];
+}
+
+- (IBAction)onMenuOpenFinder:(id)sender
+{
+    NSInteger row = [_tableView clickedRow];
+    
+    if (row < 0 || row >= self.notes.count)
+    {
+        return;
+    }
+    
+    NINote *note = self.notes[row];
+    
+    if ([NIFileManager isItemExistsAtPath:note.path])
+    {
+        [NIFileManager openFinderAtPath:note.path];
+    }
+    else
+    {
+        [self showItemNotExistsAlertWithNote:note];
+    }
+}
+
+- (IBAction)onMenuOpenTerminal:(id)sender
+{
+    NSInteger row = [_tableView clickedRow];
+    
+    if (row < 0 || row >= self.notes.count)
+    {
+        return;
+    }
+    
+    NINote *note = self.notes[row];
+    
+    if ([NIFileManager isItemExistsAtPath:note.path])
+    {
+        [NIFileManager openTerminalAtPath:note.path];
+    }
+    else
+    {
+        [self showItemNotExistsAlertWithNote:note];
+    }
+}
 
 @end

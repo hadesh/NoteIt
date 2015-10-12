@@ -259,4 +259,14 @@ NSString *const AppleScriptForSelectedItems = @"set biglist to {}\n tell applica
     }
 }
 
++ (void)openTerminalAtPath:(NSString *)path
+{
+    path = [path stringByDeletingLastPathComponent];
+    NSString *s = [NSString stringWithFormat:
+                   @"tell application \"Terminal\" to do script \"cd %@\"", path];
+    
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource:s];
+    [as executeAndReturnError:nil];
+}
+
 @end
