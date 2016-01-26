@@ -31,6 +31,8 @@
     
     [self.window.contentView addSubview:self.controller.view];
     self.controller.view.frame = ((NSView*)self.window.contentView).bounds;
+    
+    [self.window setContentSize:self.window.minSize];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

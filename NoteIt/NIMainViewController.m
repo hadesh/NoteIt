@@ -11,7 +11,7 @@
 #import "NIDataManager.h"
 #import "NINote.h"
 
-@interface NIMainViewController ()<NIMenuletDelegate, NIPopoverDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface NIMainViewController ()<NIMenuletDelegate, NIPopoverDelegate, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate>
 
 @property (weak) IBOutlet NSButton *searchButton;
 @property (weak) IBOutlet NSSearchField *searchField;
@@ -33,9 +33,22 @@
 
         _colunmIds = @[@"uuid", @"name", @"comment", @"path", @"timestamp"];
         _colunmNames = @[@"UUID", @"文件名", @"注释", @"路径", @"更新时间"];
+
     }
     
     return self;
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self initMenuButton];
+    [self initTableView];
+    
+    self.searchField.delegate = self;
+    [self searchAction:nil];
 }
 
 - (void)initMenuButton
@@ -71,14 +84,6 @@
     [self.tableView setDoubleAction:@selector(onTableDoubleClick:)];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self initMenuButton];
-    [self initTableView];
-}
-
 #pragma mark - Helpers
 
 - (void)showItemDeleteAlertWithNote:(NINote *)note
@@ -93,6 +98,12 @@
     [alert setMessageText:@"Warning"];
     [alert setInformativeText:prompt];
     [alert setAlertStyle:NSWarningAlertStyle];
+    
+    NSButton * otherButton = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+    otherButton.target = alert.buttons.firstObject;
+    otherButton.action = @selector(performClick:);
+    otherButton.keyEquivalent = @"\e"; // Escape
+    [alert setAccessoryView:otherButton];
     
     [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
         
@@ -115,6 +126,13 @@
     [alert setMessageText:@"Warning"];
     [alert setInformativeText:prompt];
     [alert setAlertStyle:NSWarningAlertStyle];
+    
+    // 添加esc快捷键
+    NSButton * otherButton = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+    otherButton.target = alert.buttons.firstObject;
+    otherButton.action = @selector(performClick:);
+    otherButton.keyEquivalent = @"\e"; // Escape
+    [alert setAccessoryView:otherButton];
     
     [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
         
@@ -279,6 +297,20 @@
     NSString *text = [self.searchField stringValue];
     
     self.notes = [NSMutableArray arrayWithArray:[[NIDataManager sharedInstance] notesWithKeywords:text]];
+    [self.tableView reloadData];
+}
+
+- (IBAction)searchReturnAction:(id)sender
+{
+    [self searchAction:nil];
+}
+
+#pragma mark - NSSearchFieldDelegate
+
+- (void)searchFieldDidEndSearching:(NSSearchField *)sender
+{
+    NILog(@"search did end");
+    self.notes = [NSMutableArray arrayWithArray:[[NIDataManager sharedInstance] notesWithKeywords:nil]];
     [self.tableView reloadData];
 }
 

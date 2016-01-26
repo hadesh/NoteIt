@@ -9,7 +9,7 @@
 #import "NIPopoverController.h"
 #import "NINote.h"
 
-@interface NIPopoverController ()<NSTextViewDelegate>
+@interface NIPopoverController ()<NSTextViewDelegate, NSPopoverDelegate>
 
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSScrollView *commentField;
@@ -32,6 +32,8 @@
     
     self.popover = [[NSPopover alloc] init];
     self.popover.contentViewController = self;
+    self.popover.delegate = self;
+    
     self.fommatter = [[NSDateFormatter alloc] init];
     [self.fommatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
@@ -44,11 +46,15 @@
     
     [self.commentTextView setRichText:NO];
     self.commentTextView.delegate = self;
+    
+    [self.cancelButton setKeyEquivalent:@"\e"]; // 设置esc快捷建
 }
 
 - (void)viewDidAppear
 {
     [super viewDidAppear];
+    
+    [self.popover becomeFirstResponder];
     [self updatePopoverUIWithNote:_note];
 }
 
@@ -72,7 +78,16 @@
     else
     {
         self.titleLabel.stringValue = note.name;
-        self.timeLabel.stringValue = [NSString stringWithFormat:@"更新时间 : %@", [self.fommatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:note.timestamp]]];
+        
+        if (note.timestamp < 0)
+        {
+            self.timeLabel.stringValue = @"----";
+        }
+        else
+        {
+            self.timeLabel.stringValue = [NSString stringWithFormat:@"更新时间 : %@", [self.fommatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:note.timestamp]]];
+        }
+        
         [self.commentTextView.textStorage.mutableString setString:note.comment];
         self.commentTextView.editable = YES;
     }

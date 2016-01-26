@@ -118,7 +118,7 @@ NSString *const AppleScriptForSelectedItems = @"set biglist to {}\n tell applica
 {
     NSData *data = [self extendedAttributesWithPath:path key:kNoteItLastModifyTimeKey];
     
-    NSTimeInterval time = 0;
+    NSTimeInterval time = -1.0;
     
     if (data)
     {
