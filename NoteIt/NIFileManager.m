@@ -263,7 +263,13 @@ NSString *const AppleScriptForSelectedItems = @"set biglist to {}\n tell applica
 {
     path = [path stringByDeletingLastPathComponent];
     NSString *s = [NSString stringWithFormat:
-                   @"tell application \"Terminal\" to do script \"cd %@\"", path];
+                   @"tell application \"Terminal\"\n"
+                   @"   activate\n"
+                   @"   if length of (get every window) is 0 then\n"
+                   @"       tell application \"System Events\" to tell process \"Terminal\" to click menu item \"New Window\" of menu \"File\" of menu bar 1\n"
+                   @"   end if\n"
+                   @"   do script \"cd %@;clear\" in front window\n"
+                   @"end tell\n", path];
     
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource:s];
     [as executeAndReturnError:nil];
