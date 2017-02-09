@@ -23,7 +23,7 @@
 		81A2B3401BB146C600A62B0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A2B33F1BB146C600A62B0E /* libsqlite3.tbd */; };
 		81D782BB1BB28E3900766B28 /* NINote.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D782BA1BB28E3900766B28 /* NINote.m */; settings = {ASSET_TAGS = (); }; };
 		81FA31F41BBB97E1000ADC00 /* NIMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81FA31F31BBB97E1000ADC00 /* NIMainViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		9C6EF1FC9EA0BA17B3A98D7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF59D5D9CCEA424B872F776 /* libPods.a */; };
+		CA6FC3E806577BFE290EED7E /* libPods-NoteIt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A382A928C41DF5C6ED957A56 /* libPods-NoteIt.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0FAF1270E018FAF7C5AA21F9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8190ED821AC1706400CAF0CA /* NoteIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8190ED861AC1706400CAF0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8190ED871AC1706400CAF0CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,8 +65,9 @@
 		81D782B91BB28E3900766B28 /* NINote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINote.h; sourceTree = "<group>"; };
 		81D782BA1BB28E3900766B28 /* NINote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINote.m; sourceTree = "<group>"; };
 		81FA31F31BBB97E1000ADC00 /* NIMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NIMainViewController.xib; sourceTree = "<group>"; };
-		8527920DCD73EDEE0DD68102 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DBF59D5D9CCEA424B872F776 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A382A928C41DF5C6ED957A56 /* libPods-NoteIt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoteIt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8D29213EB6EACCB2E483859 /* Pods-NoteIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteIt/Pods-NoteIt.release.xcconfig"; sourceTree = "<group>"; };
+		D63728DB9448308945987290 /* Pods-NoteIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteIt/Pods-NoteIt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81A2B3401BB146C600A62B0E /* libsqlite3.tbd in Frameworks */,
-				9C6EF1FC9EA0BA17B3A98D7B /* libPods.a in Frameworks */,
+				CA6FC3E806577BFE290EED7E /* libPods-NoteIt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,19 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		123A922A9D3D4D3999A1D919 /* Frameworks */ = {
+		44283C5310A4D7C64493D71F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DBF59D5D9CCEA424B872F776 /* libPods.a */,
+				A382A928C41DF5C6ED957A56 /* libPods-NoteIt.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		31CAEF97B64482BBEE9223E3 /* Pods */ = {
+		6BB34DF3A832E7CC8858540B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8527920DCD73EDEE0DD68102 /* Pods.debug.xcconfig */,
-				0FAF1270E018FAF7C5AA21F9 /* Pods.release.xcconfig */,
+				D63728DB9448308945987290 /* Pods-NoteIt.debug.xcconfig */,
+				A8D29213EB6EACCB2E483859 /* Pods-NoteIt.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -114,8 +114,8 @@
 				8190ED841AC1706400CAF0CA /* NoteIt */,
 				8190ED981AC1706400CAF0CA /* NoteItTests */,
 				8190ED831AC1706400CAF0CA /* Products */,
-				31CAEF97B64482BBEE9223E3 /* Pods */,
-				123A922A9D3D4D3999A1D919 /* Frameworks */,
+				6BB34DF3A832E7CC8858540B /* Pods */,
+				44283C5310A4D7C64493D71F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,11 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8190ED9F1AC1706400CAF0CA /* Build configuration list for PBXNativeTarget "NoteIt" */;
 			buildPhases = (
-				570C5BB354CE4039E640C32C /* Check Pods Manifest.lock */,
+				CDC0D42F125BFA407624CF35 /* [CP] Check Pods Manifest.lock */,
 				8190ED7E1AC1706400CAF0CA /* Sources */,
 				8190ED7F1AC1706400CAF0CA /* Frameworks */,
 				8190ED801AC1706400CAF0CA /* Resources */,
-				2DF7F203262B1E83967A5F59 /* Copy Pods Resources */,
+				10E86CC445B7C9EBA94E5F65 /* [CP] Embed Pods Frameworks */,
+				8797E48357D1E77D69317CD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,34 +309,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DF7F203262B1E83967A5F59 /* Copy Pods Resources */ = {
+		10E86CC445B7C9EBA94E5F65 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteIt/Pods-NoteIt-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		570C5BB354CE4039E640C32C /* Check Pods Manifest.lock */ = {
+		8797E48357D1E77D69317CD5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteIt/Pods-NoteIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDC0D42F125BFA407624CF35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -465,7 +481,7 @@
 		};
 		8190EDA01AC1706400CAF0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8527920DCD73EDEE0DD68102 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D63728DB9448308945987290 /* Pods-NoteIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -479,7 +495,7 @@
 		};
 		8190EDA11AC1706400CAF0CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FAF1270E018FAF7C5AA21F9 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A8D29213EB6EACCB2E483859 /* Pods-NoteIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
